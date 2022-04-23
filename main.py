@@ -16,3 +16,9 @@ def generate_password():
     password = ''.join(password_list)
     password_input.insert(0, password)
     pyperclip.copy(password)
+
+    # ---------------------------- UI SETUP ------------------------------- #
+
+    window = Tk()
+    window.title('Password Manager')
+    window.config(padx=50, pady=50)
