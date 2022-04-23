@@ -17,6 +17,14 @@ def generate_password():
     password_input.insert(0, password)
     pyperclip.copy(password)
 
+# ---------------------------- SAVE PASSWORD -------------------------------#
+
+
+def save():
+    user_email = email_input.get()
+    user_web = web_input.get()
+    user_pass = password_input.get()
+
 # ---------------------------- UI SETUP ------------------------------- #
 
 window = Tk()
