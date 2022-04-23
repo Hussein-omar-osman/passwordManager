@@ -32,6 +32,12 @@ def save():
                                        message=f'These are the details entered:\n \nWebsite:  {user_web} \nEmail:  {user_email} '
                                                f'\nPassword:  {user_pass}\n \nIs it okay to save')
 
+        if is_ok:
+            with open('data.txt', mode='a') as data:
+                data.write(f'{user_web}      |      {user_email}      |      {user_pass}\n')
+                web_input.delete(0, 'end')
+                password_input.delete(0, 'end')
+
 
 # ---------------------------- UI SETUP ------------------------------- #
 
