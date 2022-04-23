@@ -56,3 +56,5 @@ spinbox = Spinbox(from_=12, to=20, width=5)
 spinbox.grid(column=1, row=4)
 add_btn = Button(text='Add', width=36, bg='blue', command=save)
 add_btn.grid(column=1, row=5, columnspan=2)
+
+window.mainloop()
