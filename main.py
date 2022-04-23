@@ -47,3 +47,8 @@ email_input.grid(column=1, row=2, columnspan=2)
 
 password_input = Entry(width=35)
 password_input.grid(column=1, row=3, columnspan=2)
+
+generate_btn = Button(text='Generate Password', command=generate_password)
+generate_btn.grid(column=2, row=4)
+add_btn = Button(text='Add', width=36, bg='blue', command=save)
+add_btn.grid(column=1, row=5, columnspan=2)
