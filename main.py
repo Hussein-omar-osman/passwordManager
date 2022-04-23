@@ -25,7 +25,16 @@ def save():
     user_web = web_input.get()
     user_pass = password_input.get()
 
+    if len(user_web) == 0 or len(user_email) == 0 or len(user_pass) == 0:
+        messagebox.showinfo(title='Opps', message='Please fill all the inputs')
+    else:
+        is_ok = messagebox.askokcancel(title=user_web,
+                                       message=f'These are the details entered:\n \nWebsite:  {user_web} \nEmail:  {user_email} '
+                                               f'\nPassword:  {user_pass}\n \nIs it okay to save')
+
+
 # ---------------------------- UI SETUP ------------------------------- #
+
 
 window = Tk()
 window.title('Password Manager')
