@@ -36,3 +36,14 @@ email_label.grid(column=0, row=2)
 
 password_label = Label(text='Password:')
 password_label.grid(column=0, row=3)
+
+web_input = Entry(width=35)
+web_input.focus()
+web_input.grid(column=1, row=1, columnspan=2)
+
+email_input = Entry(width=35)
+email_input.insert(0, 'hussein@gmail.com')
+email_input.grid(column=1, row=2, columnspan=2)
+
+password_input = Entry(width=35)
+password_input.grid(column=1, row=3, columnspan=2)
