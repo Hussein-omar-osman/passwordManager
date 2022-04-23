@@ -27,3 +27,9 @@ canvas = Canvas(width=200, height=200)
 img = PhotoImage(file='logo.png')
 canvas.create_image(100, 100, image=img)
 canvas.grid(column=1, row=0)
+
+web_label = Label(text='Website:')
+web_label.grid(column=0, row=1)
+
+email_label = Label(text='Email/Username:')
+email_label.grid(column=0, row=2)
