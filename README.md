@@ -3,7 +3,7 @@
 
 ## Project Description
 
-This an application that will help us manage our passwords and even generate new passwords for us by running specific commands on terminal.
+This an application that will help us manage our passwords and even generate new passwords for us by using the Tkinter GUI based user interface
 
 ## Author
 Hussein Omar
