@@ -3,6 +3,19 @@ from tkinter import messagebox
 from random import choice
 import pyperclip
 
+
+class User:
+    def __init__(self):
+        self.login_user = 'hussein'
+        self.login_password = '586868'
+
+
+class Credentials:
+    def __init__(self, website, email, password):
+        self.c_website = website
+        self.c_email = email
+        self.c_password = password
+
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 
@@ -75,7 +88,7 @@ generate_btn = Button(text='Generate Password', command=generate_password)
 generate_btn.grid(column=2, row=4)
 num_char = Label(text='Password Length')
 num_char.grid(column=0, row=4)
-spinbox = Spinbox(from_=12, to=20, width=5)
+spinbox = Spinbox(from_=12, to=30, width=5)
 spinbox.grid(column=1, row=4)
 add_btn = Button(text='Add', width=36, bg='blue', command=save)
 add_btn.grid(column=1, row=5, columnspan=2)
