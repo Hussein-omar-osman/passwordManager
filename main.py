@@ -5,6 +5,7 @@ import pyperclip
 NAME = 'hussein'
 PASSWORD = '586868'
 
+
 class User:
     def __init__(self):
         self.login_user = NAME
@@ -35,10 +36,12 @@ def generate_password():
 
 
 def save():
+
     user_email = email_input.get()
     user_web = web_input.get()
     user_pass = password_input.get()
-
+    account = Credentials(user_web, user_email, user_pass)
+    print(account.c_email, account.c_website, account.c_password)
     if len(user_web) == 0 or len(user_email) == 0 or len(user_pass) == 0:
         messagebox.showinfo(title='Opps', message='Please fill all the inputs')
     else:
