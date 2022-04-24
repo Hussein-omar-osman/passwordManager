@@ -8,12 +8,14 @@ PASSWORD = '5868'
 
 
 class User:
+    """creates user login info"""
     def __init__(self):
         self.login_user = NAME
         self.login_password = PASSWORD
 
 
 class Credentials:
+    """creates user accounts"""
     def __init__(self, website, email, password):
         self.c_website = website
         self.c_email = email
@@ -22,6 +24,7 @@ class Credentials:
 
 # ----------------------------  CHECKING LOGIN ------------------------------- #
 def check_login():
+    """checks if user has provided the right login info"""
     user_entry = entry_login.get()
     entry_login.delete(0, 'end')
 
@@ -31,6 +34,7 @@ def check_login():
         # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
         def generate_password():
+            """generate password by simply a click """
             password_input.delete(0, 'end')
             pick = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', '0', '1', '2', '3', '4', '5', 'L', 'Q',
                     'R', 'S', 'T', 'U', 'V', 'W', 'X', '6', '7', '8', '!', '#', '$', '%', '&', '(', '*', '+']
@@ -41,11 +45,9 @@ def check_login():
             password_input.insert(0, password)
             pyperclip.copy(password)
 
-
         # ---------------------------- SAVE PASSWORD -------------------------------#
-
         def save():
-
+            """saves the users accounts to data.json"""
             user_email = email_input.get()
             user_web = web_input.get().title()
             user_pass = password_input.get()
@@ -78,6 +80,7 @@ def check_login():
 
         # ---------------------------- SEARCH ACCOUNT ------------------------------- #
         def search_account():
+            """allows the user to search accounts in data.json file"""
             search_term = web_input.get().title()
             with open('data.json', 'r') as data_file:
                 data_store = json.load(data_file)
