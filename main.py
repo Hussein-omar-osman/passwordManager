@@ -2,12 +2,13 @@ from tkinter import *
 from tkinter import messagebox
 from random import choice
 import pyperclip
-
+NAME = 'hussein'
+PASSWORD = '586868'
 
 class User:
     def __init__(self):
-        self.login_user = 'hussein'
-        self.login_password = '586868'
+        self.login_user = NAME
+        self.login_password = PASSWORD
 
 
 class Credentials:
