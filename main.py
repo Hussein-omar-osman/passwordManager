@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 from random import choice
 import pyperclip
+import json
 NAME = 'hussein'
 PASSWORD = '586868'
 
@@ -38,10 +39,16 @@ def generate_password():
 def save():
 
     user_email = email_input.get()
-    user_web = web_input.get()
+    user_web = web_input.get().title()
     user_pass = password_input.get()
     account = Credentials(user_web, user_email, user_pass)
-    print(account.c_email, account.c_website, account.c_password)
+    new_account = {
+        user_web: {
+            "email": user_email,
+            "password": user_pass
+        }
+    }
+    # print(account.c_email, account.c_website, account.c_password)
     if len(user_web) == 0 or len(user_email) == 0 or len(user_pass) == 0:
         messagebox.showinfo(title='Opps', message='Please fill all the inputs')
     else:
@@ -50,11 +57,33 @@ def save():
                                                f'\nPassword:  {user_pass}\n \nIs it okay to save')
 
         if is_ok:
-            with open('data.txt', mode='a') as data:
-                data.write(f'{user_web}      |      {user_email}      |      {user_pass}\n')
+            with open('data.json', 'r')as data_file:
+                # Read old data
+                data_store = json.load(data_file)
+                # Update Old data
+                data_store.update(new_account)
+            with open('data.json', 'w') as data_file:
+                # Save new data
+                json.dump(data_store, data_file, indent=4)
                 web_input.delete(0, 'end')
                 password_input.delete(0, 'end')
 
+# ---------------------------- SEARCH ACCOUNT ------------------------------- #
+def search_account():
+    search_term = web_input.get().title()
+    with open('data.json', 'r') as data_file:
+        data_store = json.load(data_file)
+        try:
+            account_received = data_store[search_term]
+        except:
+            messagebox.showinfo(title='Opps', message="Sorry Account Doesn't Exit")
+        else:
+            messagebox.showinfo(title=search_term, message=f"Website: {search_term}\n \nEmail: "
+                                                           f"{account_received['email']}\n "
+                                                           f"Password: {account_received['password']}\n "
+                                                           f"\n The Password is copied to your clipboard\n")
+            pyperclip.copy(account_received["password"])
+        # print(data_store)
 
 # ---------------------------- UI SETUP ------------------------------- #
 
@@ -77,9 +106,9 @@ email_label.grid(column=0, row=2)
 password_label = Label(text='Password:')
 password_label.grid(column=0, row=3)
 
-web_input = Entry(width=35)
+web_input = Entry(width=17)
 web_input.focus()
-web_input.grid(column=1, row=1, columnspan=2)
+web_input.grid(column=1, row=1)
 
 email_input = Entry(width=35)
 email_input.insert(0, 'hussein@gmail.com')
@@ -96,5 +125,8 @@ spinbox = Spinbox(from_=12, to=30, width=5)
 spinbox.grid(column=1, row=4)
 add_btn = Button(text='Add', width=36, bg='blue', command=save)
 add_btn.grid(column=1, row=5, columnspan=2)
+
+search_btn = Button(text='Search', command=search_account)
+search_btn.grid(column=2, row=1)
 
 window.mainloop()
