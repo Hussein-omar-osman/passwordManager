@@ -108,7 +108,7 @@ def check_login():
         canvas.create_image(100, 100, image=img)
         canvas.grid(column=1, row=0)
 
-        web_label = Label(text='Website:')
+        web_label = Label(text='Account/Website:')
         web_label.grid(column=0, row=1)
 
         email_label = Label(text='Email/Username:')
